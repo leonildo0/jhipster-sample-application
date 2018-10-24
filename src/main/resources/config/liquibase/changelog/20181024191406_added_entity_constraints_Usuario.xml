@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Usuario.
+    -->
+    <changeSet id="20181024191406-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="usuarios_id"
+                                 baseTableName="usuario_lanchonete"
+                                 constraintName="fk_usuario_lanchonete_usuarios_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+        <addForeignKeyConstraint baseColumnNames="lanchonetes_id"
+                                 baseTableName="usuario_lanchonete"
+                                 constraintName="fk_usuario_lanchonete_lanchonetes_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="lanchonete"/>
+        
+        <addForeignKeyConstraint baseColumnNames="usuarios_id"
+                                 baseTableName="usuario_console"
+                                 constraintName="fk_usuario_console_usuarios_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+        <addForeignKeyConstraint baseColumnNames="consoles_id"
+                                 baseTableName="usuario_console"
+                                 constraintName="fk_usuario_console_consoles_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="console"/>
+        
+        <addForeignKeyConstraint baseColumnNames="usuarios_id"
+                                 baseTableName="usuario_sessao"
+                                 constraintName="fk_usuario_sessao_usuarios_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="usuario"/>
+        <addForeignKeyConstraint baseColumnNames="sessaos_id"
+                                 baseTableName="usuario_sessao"
+                                 constraintName="fk_usuario_sessao_sessaos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sessao"/>
+        
+    </changeSet>
+</databaseChangeLog>

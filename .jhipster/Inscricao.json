@@ -1,0 +1,32 @@
+{
+    "name": "Inscricao",
+    "fields": [
+        {
+            "fieldName": "equipe",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "torneio",
+            "otherEntityName": "torneio",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181024191410",
+    "entityTableName": "inscricao",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="computador">
+            <h2><span>Computador</span> {{computador.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Jogos</span></dt>
+                <dd>
+                    <span>{{computador.jogos}}</span>
+                </dd>
+                <dt><span>Programas</span></dt>
+                <dd>
+                    <span>{{computador.programas}}</span>
+                </dd>
+                <dt><span>Preco</span></dt>
+                <dd>
+                    <span>{{computador.preco}}</span>
+                </dd>
+                <dt><span>Reserva</span></dt>
+                <dd>
+                    <div *ngIf="computador.reserva">
+                        <a [routerLink]="['/reserva', computador.reserva?.id, 'view']">{{computador.reserva?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Sessao</span></dt>
+                <dd>
+                    <span *ngFor="let sessao of computador.sessaos; let last = last">
+                        <a [routerLink]="['/sessao', sessao?.id, 'view' ]">{{sessao.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/computador', computador.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

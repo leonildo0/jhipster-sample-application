@@ -1,0 +1,52 @@
+{
+    "name": "Reserva",
+    "fields": [
+        {
+            "fieldName": "dhReserva",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "hInicio",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "hFim",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "computador",
+            "otherEntityName": "computador",
+            "otherEntityRelationshipName": "reserva"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "administrador",
+            "otherEntityName": "administrador",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "torneio",
+            "otherEntityName": "torneio",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181024191412",
+    "entityTableName": "reserva",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

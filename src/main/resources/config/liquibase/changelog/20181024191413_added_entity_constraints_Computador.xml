@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+    <!--
+        Added the constraints for entity Computador.
+    -->
+    <changeSet id="20181024191413-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="reserva_id"
+                                 baseTableName="computador"
+                                 constraintName="fk_computador_reserva_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="reserva"/>
+
+        <addForeignKeyConstraint baseColumnNames="computadors_id"
+                                 baseTableName="computador_sessao"
+                                 constraintName="fk_computador_sessao_computadors_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="computador"/>
+        <addForeignKeyConstraint baseColumnNames="sessaos_id"
+                                 baseTableName="computador_sessao"
+                                 constraintName="fk_computador_sessao_sessaos_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="sessao"/>
+        
+    </changeSet>
+</databaseChangeLog>

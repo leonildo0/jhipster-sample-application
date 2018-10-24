@@ -1,0 +1,64 @@
+<div>
+    <h2 id="page-heading">
+        <span>Torneios</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-torneio" [routerLink]="['/torneio/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Torneio
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="torneios">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Jogo</span></th>
+            <th><span>Categoria</span></th>
+            <th><span>Premiacao</span></th>
+            <th><span>Administrador</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let torneio of torneios ;trackBy: trackId">
+                <td><a [routerLink]="['/torneio', torneio.id, 'view' ]">{{torneio.id}}</a></td>
+                <td>{{torneio.jogo}}</td>
+                <td>{{torneio.categoria}}</td>
+                <td>{{torneio.premiacao}}</td>
+                <td>
+                    <div *ngIf="torneio.administrador">
+                        <a [routerLink]="['../administrador', torneio.administrador?.id, 'view' ]" >{{torneio.administrador?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/torneio', torneio.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/torneio', torneio.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'torneio/'+ torneio.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

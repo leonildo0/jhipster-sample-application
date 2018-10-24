@@ -1,0 +1,40 @@
+{
+    "name": "Administrador",
+    "fields": [
+        {
+            "fieldName": "login",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "senha",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reserva",
+            "otherEntityName": "reserva",
+            "otherEntityRelationshipName": "administrador"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "torneio",
+            "otherEntityName": "torneio",
+            "otherEntityRelationshipName": "administrador"
+        }
+    ],
+    "changelogDate": "20181024191408",
+    "entityTableName": "administrador",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

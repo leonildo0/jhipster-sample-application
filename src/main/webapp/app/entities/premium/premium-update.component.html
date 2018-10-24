@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-premium-heading">Create or edit a Premium</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!premium.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="premium.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dIncio">D Incio</label>
+                    <div class="input-group">
+                        <input id="field_dIncio" type="text" class="form-control" name="dIncio" ngbDatepicker  #dIncioDp="ngbDatepicker" [(ngModel)]="premium.dIncio"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dIncioDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dFim">D Fim</label>
+                    <div class="input-group">
+                        <input id="field_dFim" type="text" class="form-control" name="dFim" ngbDatepicker  #dFimDp="ngbDatepicker" [(ngModel)]="premium.dFim"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dFimDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_desconto">Desconto</label>
+                    <input type="number" class="form-control" name="desconto" id="field_desconto"
+                        [(ngModel)]="premium.desconto" />
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

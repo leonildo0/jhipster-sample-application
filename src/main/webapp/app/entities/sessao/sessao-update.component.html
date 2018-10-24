@@ -1,0 +1,46 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-sessao-heading">Create or edit a Sessao</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!sessao.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="sessao.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_data">Data</label>
+                    <div class="input-group">
+                        <input id="field_data" type="text" class="form-control" name="data" ngbDatepicker  #dataDp="ngbDatepicker" [(ngModel)]="sessao.data"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dataDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hInicio">H Inicio</label>
+                    <input type="number" class="form-control" name="hInicio" id="field_hInicio"
+                        [(ngModel)]="sessao.hInicio" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reserva">Reserva</label>
+                    <select class="form-control" id="field_reserva" name="reserva" [(ngModel)]="sessao.reserva">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="reservaOption.id === sessao.reserva?.id ? sessao.reserva : reservaOption" *ngFor="let reservaOption of reservas; trackBy: trackReservaById">{{reservaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+{
+    "name": "Sessao",
+    "fields": [
+        {
+            "fieldName": "data",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "hInicio",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "relationshipName": "reserva",
+            "otherEntityName": "reserva",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "sessao"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "sessao"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "computador",
+            "otherEntityName": "computador",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "sessao"
+        }
+    ],
+    "changelogDate": "20181024191415",
+    "entityTableName": "sessao",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

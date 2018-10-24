@@ -1,0 +1,46 @@
+{
+    "name": "Torneio",
+    "fields": [
+        {
+            "fieldName": "jogo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "categoria",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "premiacao",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reserva",
+            "otherEntityName": "reserva",
+            "otherEntityRelationshipName": "torneio"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "inscricao",
+            "otherEntityName": "inscricao",
+            "otherEntityRelationshipName": "torneio"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "administrador",
+            "otherEntityName": "administrador",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20181024191407",
+    "entityTableName": "torneio",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
