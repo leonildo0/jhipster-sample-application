@@ -1,0 +1,67 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-usuario-heading">Create or edit a Usuario</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!usuario.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="usuario.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_login">Login</label>
+                    <input type="text" class="form-control" name="login" id="field_login"
+                        [(ngModel)]="usuario.login" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_senha">Senha</label>
+                    <input type="text" class="form-control" name="senha" id="field_senha"
+                        [(ngModel)]="usuario.senha" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_name">Name</label>
+                    <input type="text" class="form-control" name="name" id="field_name"
+                        [(ngModel)]="usuario.name" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_credito">Credito</label>
+                    <input type="number" class="form-control" name="credito" id="field_credito"
+                        [(ngModel)]="usuario.credito" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_vip">Vip</label>
+                    <input type="checkbox" class="form-control" name="vip" id="field_vip"
+                        [(ngModel)]="usuario.vip" />
+                </div>
+
+                <div class="form-group">
+                    <label for="field_lanchonete">Lanchonete</label>
+                    <select class="form-control" id="field_lanchonete" multiple name="lanchonete" [(ngModel)]="usuario.lanchonetes">
+                        <option [ngValue]="getSelected(usuario.lanchonetes, lanchoneteOption)" *ngFor="let lanchoneteOption of lanchonetes; trackBy: trackLanchoneteById">{{lanchoneteOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_console">Console</label>
+                    <select class="form-control" id="field_console" multiple name="console" [(ngModel)]="usuario.consoles">
+                        <option [ngValue]="getSelected(usuario.consoles, consoleOption)" *ngFor="let consoleOption of consoles; trackBy: trackConsoleById">{{consoleOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="field_sessao">Sessao</label>
+                    <select class="form-control" id="field_sessao" multiple name="sessao" [(ngModel)]="usuario.sessaos">
+                        <option [ngValue]="getSelected(usuario.sessaos, sessaoOption)" *ngFor="let sessaoOption of sessaos; trackBy: trackSessaoById">{{sessaoOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

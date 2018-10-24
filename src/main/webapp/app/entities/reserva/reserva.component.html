@@ -1,0 +1,76 @@
+<div>
+    <h2 id="page-heading">
+        <span>Reservas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-reserva" [routerLink]="['/reserva/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Reserva
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="reservas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Dh Reserva</span></th>
+            <th><span>H Inicio</span></th>
+            <th><span>H Fim</span></th>
+            <th><span>Usuario</span></th>
+            <th><span>Administrador</span></th>
+            <th><span>Torneio</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let reserva of reservas ;trackBy: trackId">
+                <td><a [routerLink]="['/reserva', reserva.id, 'view' ]">{{reserva.id}}</a></td>
+                <td>{{reserva.dhReserva | date:'mediumDate'}}</td>
+                <td>{{reserva.hInicio}}</td>
+                <td>{{reserva.hFim}}</td>
+                <td>
+                    <div *ngIf="reserva.usuario">
+                        <a [routerLink]="['../usuario', reserva.usuario?.id, 'view' ]" >{{reserva.usuario?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reserva.administrador">
+                        <a [routerLink]="['../administrador', reserva.administrador?.id, 'view' ]" >{{reserva.administrador?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="reserva.torneio">
+                        <a [routerLink]="['../torneio', reserva.torneio?.id, 'view' ]" >{{reserva.torneio?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/reserva', reserva.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/reserva', reserva.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'reserva/'+ reserva.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

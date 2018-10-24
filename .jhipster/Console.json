@@ -1,0 +1,31 @@
+{
+    "name": "Console",
+    "fields": [
+        {
+            "fieldName": "jogos",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "preco",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "console"
+        }
+    ],
+    "changelogDate": "20181024191414",
+    "entityTableName": "console",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

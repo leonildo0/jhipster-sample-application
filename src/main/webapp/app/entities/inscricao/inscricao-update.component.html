@@ -1,0 +1,43 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-inscricao-heading">Create or edit a Inscricao</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!inscricao.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="inscricao.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_equipe">Equipe</label>
+                    <input type="text" class="form-control" name="equipe" id="field_equipe"
+                        [(ngModel)]="inscricao.equipe" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_usuario">Usuario</label>
+                    <select class="form-control" id="field_usuario" name="usuario" [(ngModel)]="inscricao.usuario" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usuarioOption.id === inscricao.usuario?.id ? inscricao.usuario : usuarioOption" *ngFor="let usuarioOption of usuarios; trackBy: trackUsuarioById">{{usuarioOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_torneio">Torneio</label>
+                    <select class="form-control" id="field_torneio" name="torneio" [(ngModel)]="inscricao.torneio" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="torneioOption.id === inscricao.torneio?.id ? inscricao.torneio : torneioOption" *ngFor="let torneioOption of torneios; trackBy: trackTorneioById">{{torneioOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,72 @@
+{
+    "name": "Usuario",
+    "fields": [
+        {
+            "fieldName": "login",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "senha",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "credito",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "vip",
+            "fieldType": "Boolean"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "reserva",
+            "otherEntityName": "reserva",
+            "otherEntityRelationshipName": "usuario"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "inscricao",
+            "otherEntityName": "inscricao",
+            "otherEntityRelationshipName": "usuario"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "usuario",
+            "relationshipName": "lanchonete",
+            "otherEntityName": "lanchonete",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "usuario",
+            "relationshipName": "console",
+            "otherEntityName": "console",
+            "otherEntityField": "id",
+            "ownerSide": true
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "usuario",
+            "relationshipName": "sessao",
+            "otherEntityName": "sessao",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20181024191406",
+    "entityTableName": "usuario",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

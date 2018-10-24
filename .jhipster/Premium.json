@@ -1,0 +1,27 @@
+{
+    "name": "Premium",
+    "fields": [
+        {
+            "fieldName": "dIncio",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "dFim",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "desconto",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20181024191409",
+    "entityTableName": "premium",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-reserva-heading">Create or edit a Reserva</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!reserva.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="reserva.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_dhReserva">Dh Reserva</label>
+                    <div class="input-group">
+                        <input id="field_dhReserva" type="text" class="form-control" name="dhReserva" ngbDatepicker  #dhReservaDp="ngbDatepicker" [(ngModel)]="reserva.dhReserva"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="dhReservaDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hInicio">H Inicio</label>
+                    <input type="number" class="form-control" name="hInicio" id="field_hInicio"
+                        [(ngModel)]="reserva.hInicio" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_hFim">H Fim</label>
+                    <input type="number" class="form-control" name="hFim" id="field_hFim"
+                        [(ngModel)]="reserva.hFim" />
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_usuario">Usuario</label>
+                    <select class="form-control" id="field_usuario" name="usuario" [(ngModel)]="reserva.usuario" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="usuarioOption.id === reserva.usuario?.id ? reserva.usuario : usuarioOption" *ngFor="let usuarioOption of usuarios; trackBy: trackUsuarioById">{{usuarioOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_administrador">Administrador</label>
+                    <select class="form-control" id="field_administrador" name="administrador" [(ngModel)]="reserva.administrador" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="administradorOption.id === reserva.administrador?.id ? reserva.administrador : administradorOption" *ngFor="let administradorOption of administradors; trackBy: trackAdministradorById">{{administradorOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_torneio">Torneio</label>
+                    <select class="form-control" id="field_torneio" name="torneio" [(ngModel)]="reserva.torneio" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="torneioOption.id === reserva.torneio?.id ? reserva.torneio : torneioOption" *ngFor="let torneioOption of torneios; trackBy: trackTorneioById">{{torneioOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

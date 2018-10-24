@@ -1,0 +1,42 @@
+{
+    "name": "Computador",
+    "fields": [
+        {
+            "fieldName": "jogos",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "programas",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "preco",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "reserva",
+            "otherEntityName": "reserva",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "otherEntityRelationshipName": "computador",
+            "relationshipName": "sessao",
+            "otherEntityName": "sessao",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20181024191413",
+    "entityTableName": "computador",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

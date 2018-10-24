@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="usuario">
+            <h2><span>Usuario</span> {{usuario.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Login</span></dt>
+                <dd>
+                    <span>{{usuario.login}}</span>
+                </dd>
+                <dt><span>Senha</span></dt>
+                <dd>
+                    <span>{{usuario.senha}}</span>
+                </dd>
+                <dt><span>Name</span></dt>
+                <dd>
+                    <span>{{usuario.name}}</span>
+                </dd>
+                <dt><span>Credito</span></dt>
+                <dd>
+                    <span>{{usuario.credito}}</span>
+                </dd>
+                <dt><span>Vip</span></dt>
+                <dd>
+                    <span>{{usuario.vip}}</span>
+                </dd>
+                <dt><span>Lanchonete</span></dt>
+                <dd>
+                    <span *ngFor="let lanchonete of usuario.lanchonetes; let last = last">
+                        <a [routerLink]="['/lanchonete', lanchonete?.id, 'view' ]">{{lanchonete.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Console</span></dt>
+                <dd>
+                    <span *ngFor="let console of usuario.consoles; let last = last">
+                        <a [routerLink]="['/console', console?.id, 'view' ]">{{console.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span>Sessao</span></dt>
+                <dd>
+                    <span *ngFor="let sessao of usuario.sessaos; let last = last">
+                        <a [routerLink]="['/sessao', sessao?.id, 'view' ]">{{sessao.id}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/usuario', usuario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

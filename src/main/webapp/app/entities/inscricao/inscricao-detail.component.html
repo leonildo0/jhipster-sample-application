@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="inscricao">
+            <h2><span>Inscricao</span> {{inscricao.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Equipe</span></dt>
+                <dd>
+                    <span>{{inscricao.equipe}}</span>
+                </dd>
+                <dt><span>Usuario</span></dt>
+                <dd>
+                    <div *ngIf="inscricao.usuario">
+                        <a [routerLink]="['/usuario', inscricao.usuario?.id, 'view']">{{inscricao.usuario?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Torneio</span></dt>
+                <dd>
+                    <div *ngIf="inscricao.torneio">
+                        <a [routerLink]="['/torneio', inscricao.torneio?.id, 'view']">{{inscricao.torneio?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/inscricao', inscricao.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

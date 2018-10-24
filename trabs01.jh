@@ -1,0 +1,91 @@
+entity Usuario{
+login String,
+senha String,
+name String,
+credito Long,
+vip Boolean
+}
+
+entity Torneio{
+jogo String,
+categoria String,
+premiacao String
+}
+
+entity Administrador {
+login String,
+senha String,
+name String
+}
+
+entity Premium {
+dIncio LocalDate,
+dFim LocalDate,
+desconto Long
+}
+
+entity Inscricao{
+equipe String
+}
+
+entity Lanchonete {
+bebidas String,
+lanches String,
+combos String,
+precos Long
+}
+
+entity Reserva {
+dhReserva LocalDate,
+hInicio Double,
+hFim Double
+}
+
+entity Computador {
+jogos String,
+programas String,
+preco Long
+}
+
+entity Console {
+jogos String,
+preco Long
+}
+
+entity Sessao {
+data LocalDate,
+hInicio Double,
+}
+
+relationship ManyToMany{
+Usuario{Lanchonete} to Lanchonete{Usuario}
+}
+
+relationship ManyToMany{
+Usuario{Console} to Console{Usuario}
+}
+
+relationship ManyToMany{
+Usuario{Sessao} to Sessao{Usuario}
+Computador{Sessao} to Sessao{Computador}
+}
+relationship OneToMany{
+Usuario{Reserva} to Reserva{Usuario}
+}
+
+relationship OneToMany{
+Administrador{Reserva} to Reserva{Administrador}
+Administrador{Torneio} to Torneio{Administrador}
+Torneio{Reserva} to Reserva{Torneio}
+ }
+
+relationship OneToOne{
+Sessao{Reserva} to Reserva
+}
+
+relationship OneToMany{
+Reserva{Computador} to Computador
+Usuario{Inscricao} to Inscricao
+Torneio{Inscricao} to Inscricao
+}
+

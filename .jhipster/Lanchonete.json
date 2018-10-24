@@ -1,0 +1,39 @@
+{
+    "name": "Lanchonete",
+    "fields": [
+        {
+            "fieldName": "bebidas",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "lanches",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "combos",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "precos",
+            "fieldType": "Long"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "usuario",
+            "otherEntityName": "usuario",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "lanchonete"
+        }
+    ],
+    "changelogDate": "20181024191411",
+    "entityTableName": "lanchonete",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
